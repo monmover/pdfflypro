@@ -1,0 +1,9 @@
+{
+  "name": "pdfflypro",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "pdf-lib": "^1.17.1",
+    "multer": "^1.4.5"
+  }
+}
