@@ -2357,5 +2357,15 @@
             }
         });
     </script>
+<script>
+let archivoSeleccionado = null;
+
+document.getElementById("fileInput").addEventListener("change", function(e) {
+  archivoSeleccionado = e.target.files[0];
+  if (!archivoSeleccionado) return;
+  alert("Archivo cargado correctamente: " + archivoSeleccionado.name);
+});
+</script>
 </body>
+
 </html>
