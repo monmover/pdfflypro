@@ -1105,7 +1105,8 @@
             <div id="fileList"></div>
             
             <div class="tools-grid">
-                <div class="tool-card" onclick="selectTool('merge')">
+                <div class="tool-card" onclick=unirPDF()
+
                     <div class="tool-icon">
                         <i class="fas fa-link"></i>
                     </div>
@@ -2366,6 +2367,31 @@ document.getElementById("fileInput").addEventListener("change", function(e) {
   alert("Archivo cargado correctamente: " + archivoSeleccionado.name);
 });
 </script>
+<script>
+async function unirPDF() {
+  if (!archivoSeleccionado) {
+    alert("Primero debes subir un PDF");
+    return;
+  }
+
+  const formData = new FormData();
+  formData.append("files", archivoSeleccionado);
+
+  const res = await fetch("/api/merge", {
+    method: "POST",
+    body: formData
+  });
+
+  const blob = await res.blob();
+  const url = URL.createObjectURL(blob);
+
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "resultado.pdf";
+  a.click();
+}
+</script>
 </body>
 
 </html>
+
